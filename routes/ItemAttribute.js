@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var Item=require('../models/Item');
+var ItemAttribute=require('../models/ItemAttribute');
 
 router.post('/',function(req, res,next){
-    Item.addItem(req.body,function(err,count){
+    ItemAttribute.addItemAttribute(req.body,function(err,count){
         if (err) {
             res.json(err);
         }
@@ -13,9 +13,9 @@ router.post('/',function(req, res,next){
     });
 });
 
-router.get('/id/:id?',function(req,res,next){
-    if (req.pa.id) {
-        Item.getItemXAll(req.params.id,function(err, rows){
+router.get('/_itemId/:_itemId?/:_attributeId?',function(req,res,next){
+    if (req.pa._itemId) {
+        ItemAttribute.geItemAttributeXAll(req.params._itemId,req.params._attributeId,function(err, rows){
             if (err) {
                 res.json(err);
             } else {
@@ -23,7 +23,7 @@ router.get('/id/:id?',function(req,res,next){
             }
         })
     } else {
-    Item.getItemAll(function(err,rows){
+    ItemAttribute.getItemAttributeAll(function(err,rows){
             if ( err ) {
                 res.json(err);
             }
@@ -35,7 +35,7 @@ router.get('/id/:id?',function(req,res,next){
 });
 
 router.put('/',function(req,res,next){
-    Item.updateItem(req.body,function(err,rows){
+    ItemAttribute.updateItemAttribute(req.body,function(err,rows){
  if(err) {
             res.json(err);
         }
@@ -45,8 +45,8 @@ router.put('/',function(req,res,next){
     });
 });
 
-router.delete('/:id',function(req,res,next){
-    Item.deleteItem(req.params.id,function(){
+router.delete('/:_itemId/:_attributeId',function(req,res,next){
+    ItemAttribute.deleteItemAttribute(req.params._itemId,req.params._attributeId,function(){
         if(err) {
             res.json(err);
         }
