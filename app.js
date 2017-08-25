@@ -12,6 +12,7 @@ var customers=require('./routes/Customers');
 var bodyMeas=require('./routes/bodyMeas');
 var item=require('./routes/Item');
 var itemAttribute=require('./routes/ItemAttribute');
+var itemAttribute=require('./routes/Attribute');
 
 var app = express();
 
@@ -34,6 +35,7 @@ app.use('/Customers', customers);
 app.use('/bodyMeas', bodyMeas);
 app.use('/item', item);
 app.use('/itemAttribute', itemAttribute);
+app.use('/Attribute', Attribute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
