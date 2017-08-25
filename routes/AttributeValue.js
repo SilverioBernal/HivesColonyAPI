@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var Attribute=require('../models/Attribute');
+var AttributeValue=require('../models/AttributeValue');
 
 router.post('/',function(req, res,next){
-    Attribute.addAttribute(req.body,function(err,count){
+    AttributeValue.addAttributeValue(req.body,function(err,count){
         if (err) {
             res.json(err);
         }
@@ -15,7 +15,7 @@ router.post('/',function(req, res,next){
 
 router.get('/_id/:_id?',function(req,res,next){
     if (req.pa._itemId) {
-        Attribute.geAttributeXAll(req.params._itemId,req.params._attributeId,function(err, rows){
+        AttributeValue.geAttributeValueXAll(req.params._itemId,req.params._AttributeValueId,function(err, rows){
             if (err) {
                 res.json(err);
             } else {
@@ -23,7 +23,7 @@ router.get('/_id/:_id?',function(req,res,next){
             }
         })
     } else {
-    Attribute.getAttributeAll(function(err,rows){
+    AttributeValue.getAttributeValueAll(function(err,rows){
             if ( err ) {
                 res.json(err);
             }
@@ -35,7 +35,7 @@ router.get('/_id/:_id?',function(req,res,next){
 });
 
 router.put('/',function(req,res,next){
-    Attribute.updateAttribute(req.body,function(err,rows){
+    AttributeValue.updateAttributeValue(req.body,function(err,rows){
  if(err) {
             res.json(err);
         }
@@ -46,7 +46,7 @@ router.put('/',function(req,res,next){
 });
 
 router.delete('/:_id/',function(req,res,next){
-    Attribute.deleteAttribute(req.params._itemId,req.params._attributeId,function(){
+    AttributeValue.deleteAttributeValue(req.params._itemId,req.params._AttributeValueId,function(){
         if(err) {
             res.json(err);
         }
