@@ -11,9 +11,10 @@ var users = require('./routes/users');
 var customers=require('./routes/Customers');
 var bodyMeas=require('./routes/bodyMeas');
 var item=require('./routes/Item');
+var itemType=require('./routes/ItemType');
 var itemAttribute=require('./routes/ItemAttribute');
-var Attribute=require('./routes/Attribute');
-var AttributeValue=require('./routes/AttributeValue');
+var attribute=require('./routes/Attribute');
+var attributeValue=require('./routes/AttributeValue');
 
 var app = express();
 
@@ -35,9 +36,10 @@ app.use('/users', users);
 app.use('/Customers', customers);
 app.use('/bodyMeas', bodyMeas);
 app.use('/item', item);
+app.use('/itemType', itemType);
 app.use('/itemAttribute', itemAttribute);
-app.use('/Attribute', Attribute);
-app.use('/AttributeValue', AttributeValue);
+app.use('/Attribute', attribute);
+app.use('/AttributeValue', attributeValue);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

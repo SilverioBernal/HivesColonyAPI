@@ -25,7 +25,7 @@ getItemAll:function(callback){
 },
 
 getItemXAll:function(id, callback){
-     return db.query('CALL sp_select_customer_id(?)',[id],callback);
+     return db.query('CALL spItemGetById(?)',[id],callback);
 },
 updateItem:function(Item,callback){
 return db.query('CALL spItemUpdate(?.?,?,?)',[Item._id, 

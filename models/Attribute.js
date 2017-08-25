@@ -24,7 +24,7 @@ getAttributeAll:function(callback){
    return db.query('CALL spAttributeGetAll',callback); 
 },
 
-geAttributeXAll:function( _id, _attributeId, callback){
+geAttributeXAll:function( _id,  callback){
      return db.query('CALL spAttributeGetById(?)',[_id],callback);
 },
 updateAttribute:function(Attribute,callback){
