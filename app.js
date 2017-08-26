@@ -16,6 +16,7 @@ var itemAttribute=require('./routes/ItemAttribute');
 var attribute=require('./routes/Attribute');
 var attributeValue=require('./routes/AttributeValue');
 var bodyMeasurement=require('./routes/BodyMeasurement');
+var order=require('./routes/Order');
 
 
 var app = express();
@@ -43,6 +44,7 @@ app.use('/itemAttribute', itemAttribute);
 app.use('/Attribute', attribute);
 app.use('/AttributeValue', attributeValue);
 app.use('/BodyMeasurement', bodyMeasurement);
+app.use('/Order', order);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

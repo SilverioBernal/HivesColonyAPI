@@ -51,7 +51,7 @@ router.get('/mail/:id?',function(req,res,next){
 });
 
 router.post('/', function(req,res,next){
-    Customers.addCustomer(req.body,function(err,count){
+       Customers.addCustomer(req.body,function(err,count){
         if(err) {
             res.json(err);
         }
