@@ -2,36 +2,10 @@ var db = require('../dbConnection'); // refernce to dbConnection
 
 var bodyMeas ={
     addBodyMeas:function(bodyMeas,callback){
-        return db.query('CALL spCambiado(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+        return db.query('CALL spBodyMeasurementCreate(?,?,?,?)',
         [
             bodyMeas._customerId,
-            bodyMeas._type, 
-            bodyMeas._height, 
-            bodyMeas._weight, 
-            bodyMeas._jacketSize, 
-            bodyMeas._pantSize, 
-            bodyMeas._shitSize, 
-            bodyMeas._neck, 
-            bodyMeas._shoulder, 
-            bodyMeas._shirtSleeveLength, 
-            bodyMeas._suitSleeveLength, 
-            bodyMeas._armHole, 
-            bodyMeas._bicep, 
-            bodyMeas._wrist, 
-            bodyMeas._watchSide, 
-            bodyMeas._chest, 
-            bodyMeas._stomach, 
-            bodyMeas._beltLine, 
-            bodyMeas._hips, 
-            bodyMeas._pantLength, 
-            bodyMeas._thighs, 
-            bodyMeas._knee, 
-            bodyMeas._pantCuff, 
-            bodyMeas._uLine, 
-            bodyMeas._jacketLength, 
-            bodyMeas._shoulderRoll, 
-            bodyMeas._shoulderSlope, 
-            bodyMeas._hunch, 
+            bodyMeas._type,             
             bodyMeas._urlfile, 
             bodyMeas._notes
         ],
@@ -46,36 +20,9 @@ var bodyMeas ={
     },
 
     updateBodyMeas:function(bodyMeas,callback){
-        return db.query('CALL spBodyMeasurementUpdate(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+        return db.query('CALL spBodyMeasurementUpdate(?,?,?)',
         [
-            bodyMeas._customerId,
-            bodyMeas._type, 
-            bodyMeas._height, 
-            bodyMeas._weight, 
-            bodyMeas._jacketSize, 
-            bodyMeas._pantSize, 
-            bodyMeas._shitSize, 
-            bodyMeas._neck, 
-            bodyMeas._shoulder, 
-            bodyMeas._shirtSleeveLength, 
-            bodyMeas._suitSleeveLength, 
-            bodyMeas._armHole, 
-            bodyMeas._bicep, 
-            bodyMeas._wrist, 
-            bodyMeas._watchSide, 
-            bodyMeas._chest, 
-            bodyMeas._stomach, 
-            bodyMeas._beltLine, 
-            bodyMeas._hips, 
-            bodyMeas._pantLength, 
-            bodyMeas._thighs, 
-            bodyMeas._knee, 
-            bodyMeas._pantCuff, 
-            bodyMeas._uLine, 
-            bodyMeas._jacketLength, 
-            bodyMeas._shoulderRoll, 
-            bodyMeas._shoulderSlope, 
-            bodyMeas._hunch, 
+            bodyMeas._id,
             bodyMeas._urlfile, 
             bodyMeas._notes
         ],
@@ -90,10 +37,9 @@ var bodyMeas ={
     },
     
     getBodyMeas:function(_customerId, _type,callback) {
-        return db.query('CALL spBodyMeasurementGetById (?, ?)', 
+        return db.query('CALL spMeasureAttributeGetById (?)', 
         [
-            _customerId,
-            _type
+            _id
         ],function(error,result){
             if(error){
                 callback(error.message,null);
@@ -102,10 +48,9 @@ var bodyMeas ={
     },
 
     deleteBodyMeas:function(_customerId, _type, callback) {
-        return db.query('CALL spBodyMeasurementDelete (?, ?)', 
+        return db.query('CALL spMeasureAttributeDelete (?)', 
         [
-            _customerId,
-            _type
+            _id
         ],function(error,result){
             if(error){
                 callback(error.message,null);
