@@ -1,13 +1,10 @@
 var db = require('../dbConnection'); // refernce to dbConnection
 
-var bodyMeas ={
-    addBodyMeas:function(bodyMeas,callback){
-        return db.query('CALL spBodyMeasurementCreate(?,?,?,?)',
+var meassureAttribute ={
+    addMeassureAttribute:function(description,callback){
+        return db.query('CALL spMeasureAttributeCreate(?)',
         [
-            bodyMeas._customerId,
-            bodyMeas._type,             
-            bodyMeas._urlfile, 
-            bodyMeas._notes
+            description
         ],
         function(error,result){
         if(error){
@@ -19,12 +16,11 @@ var bodyMeas ={
         });
     },
 
-    updateBodyMeas:function(bodyMeas,callback){
-        return db.query('CALL spBodyMeasurementUpdate(?,?,?)',
+    updateMeassureAttribute:function(bodyMeas,callback){
+        return db.query('CALL spMeasureAttributeUpdate(?,?)',
         [
             bodyMeas._id,
-            bodyMeas._urlfile, 
-            bodyMeas._notes
+            bodyMeas._description
         ],
         function(error,result){
         if(error){
@@ -36,8 +32,8 @@ var bodyMeas ={
         });
     },
     
-    getBodyMeas:function(_customerId, _type,callback) {
-        return db.query('CALL spBodyMeasurementGetById (?)', 
+    getMeassureAttributeById:function(_customerId, _type,callback) {
+        return db.query('CALL spMeasureAttributeGetById (?)', 
         [
             _id
         ],function(error,result){
@@ -47,8 +43,12 @@ var bodyMeas ={
         });
     },
 
-    deleteBodyMeas:function(_customerId, _type, callback) {
-        return db.query('CALL spBodyMeasurementDelete (?)', 
+    getMeassureAttributeAll:function(callback){
+        return db.query('CALL spCustomerGetAll',callback);
+    },
+
+    deleteMeassureAttribute:function(_id, _type, callback) {
+        return db.query('CALL spMeasureAttributeDelete (?)', 
         [
             _id
         ],function(error,result){
@@ -59,4 +59,4 @@ var bodyMeas ={
     }
 };
 
-module.exports = bodyMeas;
+module.exports = meassureAttribute;
