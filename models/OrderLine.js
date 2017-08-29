@@ -2,7 +2,7 @@ var db = require('../dbConnection'); // refernce to dbConnection
 
 var OrderLine ={
     addOrderLine:function(OrderLine, callback){
-        return db.query('CALL spOrderLineCreate(?,?,?,?,?,?,?,?,?,?)',
+        return db.query('CALL spOrderLineCreate(?,?,?,?, ?,?,?,?, ?)',
         [
             OrderLine._orderId,
             OrderLine._lineId,
@@ -24,7 +24,7 @@ var OrderLine ={
     },
 
     updateOrderLineClose:function(_orderId,_lineId,_itemId,callback){
-        return db.query('CALL spOrderLineClose(?,?,?)',[_id,_closeNotes],
+        return db.query('CALL spOrderLineClose(?,?,?)',[_orderId,_lineId,_itemId],
     function(error,result) {
         if(error){
             callback(error.message,null);
