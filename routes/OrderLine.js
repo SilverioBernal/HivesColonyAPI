@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var Order=require('../models/Order');
+var OrderLine=require('../models/OrderLine');
 
 router.post('/',function(req,res,next) {
-    Order.addOrderLine(req.Order, function(err,count){
+    OrderLine.addOrderLine(req.body, function(err,count){
         if(err) {
             res.json(err);
         }
@@ -14,7 +14,10 @@ router.post('/',function(req,res,next) {
 });
 
 router.put('/:_orderId/:_lineId/:_itemId',function(req,res,next) {
-    Order.OrderLineClose(req.Order, function(err,count){
+    OrderLine.updateOrderLineClose(req.params._orderId,
+                                req.params._lineId,
+                                req.params._itemId, 
+    function(err,count){
         if(err) {
             res.json(err);
         }
@@ -24,5 +27,41 @@ router.put('/:_orderId/:_lineId/:_itemId',function(req,res,next) {
     });
 });
 
+router.get('/:_orderId/:_lineId/', function(req,res,next) {
+    OrderLine.getOrderLineGetByLineId(req.params._orderId,
+                                    req.params._lineId,
+    function(err, rows){
+        if ( err ) {
+            res.json(err);
+        }
+        else{
+            res.json(rows);
+        }
+    }) ;
+});
+
+router.get('/:_orderId', function(req,res,next) {
+    OrderLine.getOrderLineGetByOrderId(req.params._orderId,
+    function(err, rows){
+        if ( err ) {
+            res.json(err);
+        }
+        else{
+            res.json(rows);
+        }
+    }) ;
+});
+
+router.delete('/:_orderId/:_lineId',function(req,res,next){
+    OrderLine.delOrderLineDelete(req.params._orderId, req.params._lineId,
+    function(err,count){
+        if(err) {
+            res.json(err);
+        }
+        else {
+            res.json(req.body);
+        }
+    });
+});
 
 module.exports=router;

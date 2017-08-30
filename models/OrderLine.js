@@ -35,7 +35,7 @@ var OrderLine ={
     });
     },
 
-    getOrderLineGetByLineId:function(_orderId,callback) {
+    getOrderLineGetByOrderId:function(_orderId,callback) {
         return db.query('CALL spOrderLineGetByOrderId(?)',[_orderId],
         function(error,result){
             if(error){
@@ -44,7 +44,7 @@ var OrderLine ={
         });
     },
 
-    getOrderLineGetByOrderId:function(_orderId,_lineId,callback) {
+    getOrderLineGetByLineId:function(_orderId,_lineId,callback) {
         return db.query('CALL spOrderLineGetByLineId(?,?)',[_orderId,_lineId],
         function(error,result){
             if(error){

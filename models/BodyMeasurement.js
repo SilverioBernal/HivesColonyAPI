@@ -99,4 +99,4 @@ var BodyMeasurement ={
     }
 };
 
-module.exports=BodyMeasurements;
+module.exports=BodyMeasurement;
