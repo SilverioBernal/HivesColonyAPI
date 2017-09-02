@@ -7,7 +7,7 @@ var Customers={
     },
 
     getCustomerAll:function(callback){
-        return db.query('CALL spCustomerGetAll',callback);
+        return db.query('CALL spCustomerGetAll()',callback);
     },
 
     getCustomerById:function(por_id,callback){
