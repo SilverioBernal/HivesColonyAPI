@@ -1,10 +1,10 @@
 var mysql=require('mysql');
  var connection=mysql.createPool({
  
- host:'192.168.0.7',
+ host:'localhost',
  port:3306,
  user:'root',
- password:'Tecnologia.4',
+ password:'mysql',
  database:'hivecolony',
  multipleStatements: true
  

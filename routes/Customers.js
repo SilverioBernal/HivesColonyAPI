@@ -26,9 +26,9 @@ router.get('/id/:id?',function(req,res,next){
 
 });
 
-router.get('/mail/:id?',function(req,res,next){    
-    if(req.params.id){
-        Customers.getCustomerByEmail(req.params.id,function(err,rows){
+router.get('/mail/:mail?',function(req,res,next){    
+    if(req.params.mail){
+        Customers.getCustomerByEmail(req.params.mail,function(err,rows){
             if ( err ) {
                 res.json(err);
             }
@@ -56,7 +56,7 @@ router.post('/', function(req,res,next){
             res.json(err);
         }
         else {
-            res.json(req.body);//or return count for 1 & 0
+            res.json(count);// cgra return last insert id 
         }
     });
 });
@@ -72,8 +72,8 @@ router.put('/',function(req,res,next){
     });
 });
 
-router.delete('/:id',function(req,res,next){
-    Customers.deleteCustomer(req.params.id,function(err,count){
+router.delete('/:_id',function(req,res,next){
+    Customers.deleteCustomer(req.params._id,function(err,count){
         if(err) {
             res.json(err);
         }
