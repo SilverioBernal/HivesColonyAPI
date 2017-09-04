@@ -37,14 +37,9 @@ var bodyMeas ={
     },
     
     getBodyMeas:function(_customerId, _type,callback) {
-        return db.query('CALL spBodyMeasurementGetById (?)', 
-        [
-            _id
-        ],function(error,result){
-            if(error){
-                callback(error.message,null);
-            }
-        });
+        return db.query('CALL spBodyMeasurementGetById (?,?)', 
+        [   _customerId,
+            _type ],callback);
     },
 
     deleteBodyMeas:function(_customerId, _type, callback) {
