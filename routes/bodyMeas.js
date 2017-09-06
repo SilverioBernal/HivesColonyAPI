@@ -24,8 +24,8 @@ router.put('/',function(req,res,next){
     });
 });
 
-router.get('/:customerId/:type',function(req,res,next){
-    bodymeas.getdbodyMeas(req.params.customerId, req.params.type,function(err,rows){
+router.get('/:_customerId/:_type',function(req,res,next){
+    bodymeas.getBodyMeas(req.params._customerId, req.params._type,function(err,rows){
         if(err) {
             res.json(err);
         }

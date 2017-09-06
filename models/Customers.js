@@ -2,7 +2,7 @@ var db = require('../dbConnection'); // refernce to dbConnection
 
 var Customers={
 
-    getCustomerByEmail:function(por_customerEmail,callback){
+    getCustomerByEmail:function(_customerEmail,callback){
         return db.query('CALL spCustomerGetByEmail(?)',[_customerEmail],callback);
     },
 
@@ -10,7 +10,7 @@ var Customers={
         return db.query('CALL spCustomerGetAll()',callback);
     },
 
-    getCustomerById:function(por_id,callback){
+    getCustomerById:function(_id,callback){
         return db.query('CALL spCustomerGetById(?)',[_id],callback);
     },
 
@@ -33,7 +33,7 @@ var Customers={
 			else
 			{
 				//devolvemos la última id insertada
-                console.log(result[0].FileContent)
+                console.log(result[0][0]['LAST_INSERT_ID()'])
 				callback(null,{"LAST_INSERT_ID" : result[0][0]['LAST_INSERT_ID()']});
 			}
 		});
@@ -55,10 +55,10 @@ var Customers={
             }
         });
     },
-    deleteCustomer:function(id,callback){
+    deleteCustomer:function(_id,callback){
         return db.query('CALL spCustomerDelete(?)',[_id], callback);
         if(error){
-            callback(null, id);
+            callback(null, _id);
         }			
     }
 };
