@@ -14,7 +14,7 @@ router.post('/', function(req,res,next){
 });
 
 router.put('/',function(req,res,next){
-    bodymeas.updateBodyMeas(req.body,
+    BodyMeasurementDetail.updateBodyMeasurementDetail(req.body,
         function(err,rows){
         if(err) {
             res.json(err);
@@ -25,8 +25,8 @@ router.put('/',function(req,res,next){
     });
 });
 
-router.get('/:_customerId',function(req,res,next){
-    bodymeas.getBodyMeas(req.params._customerId,function(err,rows){
+router.get('/:_bodyMeasurementId',function(req,res,next){
+    BodyMeasurementDetail.getBodyMeasurementDetailAll(req.params._bodyMeasurementId,function(err,rows){
         if(err) {
             res.json(err);
         }
@@ -36,8 +36,20 @@ router.get('/:_customerId',function(req,res,next){
     });
 });
 
-router.delete('/:_id',function(req,res,next){
-    bodymeas.deleteBodyMeas(req.params._id,function(err,count){
+router.get('/:_bodyMeasurementId/:_measurementAttributeId',function(req,res,next){
+    BodyMeasurementDetail.getBodyMeasurementDetailById(req.params._bodyMeasurementId,req.params._measurementAttributeId,function(err,rows){
+        if(err) {
+            res.json(err);
+        }
+        else{
+            res.json(rows);
+        }
+    });
+});
+
+
+router.delete('/:_bodyMeasurementId/:_measurementAttributeId',function(req,res,next){
+    BodyMeasurementDetail.deleteBodyMeasurementDetail(req.params._bodyMeasurementId,req.params._measurementAttributeId,function(err,count){
         if(err) {
             res.json(err);
         }   

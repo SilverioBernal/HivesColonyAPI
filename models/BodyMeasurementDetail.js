@@ -35,11 +35,8 @@ var BodyMeasurementDetail={
             Customer._bodyMeasurementId,
             Customer._measurementAttributeId,
             Customer._measurement
-        ],function(error,result){
-            if(error){
-				callback(null, Customers);
-            }
-        });
+        ],
+        callback);
     },
 
     deleteBodyMeasurementDetail:function(_bodyMeasurementId, _measurementAttributeId, callback){
