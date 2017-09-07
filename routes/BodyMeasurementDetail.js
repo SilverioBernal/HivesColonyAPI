@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var bodymeas=require('../models/bodyMeas');
+var BodyMeasurementDetail=require('../models/BodyMeasurementDetail');
 
 router.post('/', function(req,res,next){
-    bodymeas.addBodyMeas(req.body,function(err,count){
+    BodyMeasurementDetail.addBodyMeasurementDetail(req.body,function(err,count){
         if(err) {
             res.json(err);
         }

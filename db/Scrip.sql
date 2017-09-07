@@ -11,7 +11,7 @@ order by firstName, lastName;
 END$$
 
 DELIMITER ;
-------------------------------*-----------
+/*------------------------------*-----------*/
 
 
 USE `hivecolony`;
@@ -42,7 +42,7 @@ END$$
 
 DELIMITER ;
 
---------------------------------------
+/*------------------------------*-----------*/
 
 USE `hivecolony`;
 DROP procedure IF EXISTS `spCustomerGetByEmail`;
@@ -60,3 +60,55 @@ END$$
 
 DELIMITER ;
 
+/*------------------------------*-----------*/
+
+USE `hivecolony`;
+DROP procedure IF EXISTS `spBodyMeasurementCreate`;
+
+DELIMITER $$
+USE `hivecolony`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spBodyMeasurementCreate`(	
+	IN _customerId INT, 
+	IN _type VARCHAR(1), 	
+	IN _urlFile VARCHAR(250), 
+	IN _notes TEXT
+)
+BEGIN
+INSERT INTO `hivecolony`.`BodyMeasurement` 
+(
+	`customerId`, 
+	`type`, 
+	`urlFile`, 
+	`notes`
+) 
+VALUES 
+(
+	_customerId, 
+	_type, 
+	_urlfile, 
+	_notes
+);
+Select LAST_INSERT_ID();
+END$$
+
+/*------------------------------*-----------*/
+
+USE `hivecolony`;
+DROP procedure IF EXISTS `spBodyMeasurementDetailCreate`;
+
+DELIMITER $$
+USE `hivecolony`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spBodyMeasurementDetailCreate`(		 	
+	IN _bodyMeasurementId int, 
+    IN _measurementAttributeId int, 
+    IN _measurement double
+)
+BEGIN
+INSERT INTO `hivecolony`.`BodyMeasurementDetail` 
+	(`bodyMeasurementId`, `measurementAttributeId`, `measurement`) 
+VALUES 
+	(_bodyMeasurementId, _measurementAttributeId, _measurement);
+    Select LAST_INSERT_ID();
+END$$
+
+DELIMITER ;

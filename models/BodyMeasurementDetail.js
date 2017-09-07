@@ -21,12 +21,10 @@ var BodyMeasurementDetail={
 			if(error)
 			{
 				callback(null, error.message);
-                console.log(error.message)
 			}
 			else
 			{
 				//devolvemos la última id insertada
-                console.log(result[0].FileContent)
 				callback(null,{"LAST_INSERT_ID" : result[0][0]['LAST_INSERT_ID()']});
 			}
 		});
@@ -52,4 +50,4 @@ var BodyMeasurementDetail={
     }
 };
 
-module.exports=Customers;
+module.exports=BodyMeasurementDetail;

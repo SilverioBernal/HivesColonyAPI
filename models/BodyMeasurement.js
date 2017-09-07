@@ -1,3 +1,5 @@
+//ya no aplica cgra 2017/09/06
+
 var db = require('../dbConnection'); // refernce to dbConnection
 
 var BodyMeasurement ={

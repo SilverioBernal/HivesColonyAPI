@@ -1,3 +1,4 @@
+//ya no aplica cgra 2017/09/06
 var express = require('express');
 var router = express.Router();
 var BodyMeasurement=require('../models/BodyMeasurement');
