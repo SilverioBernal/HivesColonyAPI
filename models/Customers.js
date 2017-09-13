@@ -17,13 +17,13 @@ var Customers={
     addCustomer:function(Customer, callback){
         return db.query('CALL spCustomerCreate(?,?,?,?,?,?,?)',
         [
-            Customer._firstName,
-            Customer._lastname,
-            Customer._customerEmail,
-            Customer._phoneNumber,
-            Customer._streetAddress,
-            Customer._zipCode,
-            Customer._birthDate
+            Customer.firstName,
+            Customer.lastname,
+            Customer.customerEmail,
+            Customer.phoneNumber,
+            Customer.streetAddress,
+            Customer.zipCode,
+            Customer.birthDate
         ],function(error, result) {
 			if(error)
 			{

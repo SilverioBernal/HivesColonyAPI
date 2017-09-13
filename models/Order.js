@@ -1,25 +1,26 @@
 var db = require('../dbConnection'); // refernce to dbConnection
 
 var Order ={
-    addOrder:function(Order, callback){
-        return db.query('CALL spOrderCreate(?,?,?,?,?,?,?,?)',
+    addOrder:function(Order, callback){        
+        return db.query('CALL spOrderCreate(?,?,?)',
         [
-            Order._customerId,
-            Order._storeId,
-            Order._isDraft,
-            Order._date,
-            Order._orderValue,
-            Order._taxValue,
-            Order._userId,
-            Order._creationNotes            
-        ],function(error,result){
-            if(error){
-                callback(error.message,null);
-            }
-            else{
-                callback(null,{"LAST_INSERT_ID" : result[0][0]['LAST_INSERT_ID()']});
-            }
-        });
+            Order.customerId,
+            Order.storeId,            
+            Order.userId            
+        ],function(error, result) {
+			if(error)
+			{
+				callback(null, error.message);
+                console.log(error.message)
+			}
+			else
+			{
+                console.log('no error');
+				//devolvemos la última id insertada
+                console.log(result[0][0]['LAST_INSERT_ID()'])
+				callback(null,{"LAST_INSERT_ID" : result[0][0]['LAST_INSERT_ID()']});
+			}
+		});
     },
 
     updateOrderClose:function(_id,_closeNotes,callback){
