@@ -49,17 +49,11 @@ var Customers={
             Customer._streetAddress,
             Customer._zipCode,
             Customer._birthDate
-        ],function(error,result){
-            if(error){
-				callback(null, Customers);
-            }
-        });
+        ],
+        callback);
     },
     deleteCustomer:function(_id,callback){
-        return db.query('CALL spCustomerDelete(?)',[_id], callback);
-        if(error){
-            callback(null, _id);
-        }			
+        return db.query('CALL spCustomerDelete(?)',[_id], callback);       		
     }
 };
 

@@ -14,18 +14,19 @@ router.post('/', function(req,res,next){
 });
 
 router.put('/',function(req,res,next){
-    bodymeas.updateBodyMeas(req.body,function(err,rows){
+    bodymeas.updateBodyMeas(req.body,
+        function(err,rows){
         if(err) {
             res.json(err);
         }
         else {
-            res.json(req.body);//or return count for 1 & 0
+            res.json(rows);//or return count for 1 & 0
         }
     });
 });
 
-router.get('/:_customerId/:_type',function(req,res,next){
-    bodymeas.getBodyMeas(req.params._customerId, req.params._type,function(err,rows){
+router.get('/:_customerId',function(req,res,next){
+    bodymeas.getBodyMeas(req.params._customerId,function(err,rows){
         if(err) {
             res.json(err);
         }
@@ -35,11 +36,15 @@ router.get('/:_customerId/:_type',function(req,res,next){
     });
 });
 
-router.delete('//:customerId/:type',function(req,res,next){
-    bodymeas.deleteBodyMeas(req.params.customerId, req.params.type,function(err,count){
+router.delete('/:_id',function(req,res,next){
+    bodymeas.deleteBodyMeas(req.params._id,function(err,count){
         if(err) {
             res.json(err);
-        }        
+        }   
+        else
+            {
+                res.json(count);
+            }     
     });
 });
 

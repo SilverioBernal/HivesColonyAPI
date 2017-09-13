@@ -21,12 +21,10 @@ var BodyMeasurementDetail={
 			if(error)
 			{
 				callback(null, error.message);
-                console.log(error.message)
 			}
 			else
 			{
 				//devolvemos la última id insertada
-                console.log(result[0].FileContent)
 				callback(null,{"LAST_INSERT_ID" : result[0][0]['LAST_INSERT_ID()']});
 			}
 		});
@@ -37,11 +35,8 @@ var BodyMeasurementDetail={
             Customer._bodyMeasurementId,
             Customer._measurementAttributeId,
             Customer._measurement
-        ],function(error,result){
-            if(error){
-				callback(null, Customers);
-            }
-        });
+        ],
+        callback);
     },
 
     deleteBodyMeasurementDetail:function(_bodyMeasurementId, _measurementAttributeId, callback){
@@ -52,4 +47,4 @@ var BodyMeasurementDetail={
     }
 };
 
-module.exports=Customers;
+module.exports=BodyMeasurementDetail;

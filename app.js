@@ -18,7 +18,7 @@ var attributeValue=require('./routes/AttributeValue');
 var bodyMeasurement=require('./routes/BodyMeasurement');
 var order=require('./routes/Order');
 var orderLine=require('./routes/OrderLine');
-
+var bodyMeasurementDetail=require('./routes/BodyMeasurementDetail');
 
 var app = express();
 
@@ -44,7 +44,7 @@ app.use('/itemType', itemType);
 app.use('/itemAttribute', itemAttribute);
 app.use('/Attribute', attribute);
 app.use('/AttributeValue', attributeValue);
-app.use('/BodyMeasurement', bodyMeasurement);
+app.use('/BodyMeasurementDetail', bodyMeasurementDetail);
 app.use('/Order', order);
 app.use('/OrderLine', orderLine);
 
